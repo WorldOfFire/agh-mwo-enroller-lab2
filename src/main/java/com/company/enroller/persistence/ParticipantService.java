@@ -19,6 +19,9 @@ public class ParticipantService {
         connector = DatabaseConnector.getInstance();
     }
 
+
+
+
     public Collection<Participant> getAll(String sortBy, String sortOrder, String key) {
         String hql = "FROM Participant";
         Query query = connector.getSession().createQuery(hql);

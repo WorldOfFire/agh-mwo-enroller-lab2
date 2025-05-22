@@ -1,6 +1,7 @@
 package com.company.enroller.persistence;
 
 import com.company.enroller.model.Meeting;
+import com.company.enroller.model.Participant;
 import org.hibernate.Session;
 import org.hibernate.query.Query;
 import org.springframework.stereotype.Component;
@@ -43,17 +44,11 @@ public class MeetingService {
 		return true;
 	}
 
-	public Meeting update(long id, Meeting meeting) {
-		Meeting existingMeeting = getById(id);
-		if (existingMeeting == null) {
-			return null;
-		}
-		existingMeeting.setTitle(meeting.getTitle());
-		existingMeeting.setDescription(meeting.getDescription());
-		existingMeeting.setDate(meeting.getDate());
+	public Meeting update(Meeting meeting) {
 		this.session.beginTransaction();
-		this.session.update(existingMeeting);
+		this.session.update(meeting);
 		this.session.getTransaction().commit();
-		return existingMeeting;
+		return meeting;
 	}
+
 }
