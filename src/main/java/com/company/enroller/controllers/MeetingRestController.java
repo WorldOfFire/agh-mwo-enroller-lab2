@@ -22,9 +22,6 @@ public class MeetingRestController {
     @Autowired
     ParticipantService participantService;
 
-
-    //Zadanie II
-
     @RequestMapping(value = "/{id}/participants/{login}", method = RequestMethod.DELETE)
     public ResponseEntity<?> removeParticipantFromMeeting(@PathVariable("id") long idMeeting, @PathVariable("login") String login) {
         Meeting meeting = meetingService.getById(idMeeting);
@@ -69,9 +66,6 @@ public class MeetingRestController {
         }
         return new ResponseEntity<>(meeting.getParticipants(), HttpStatus.OK);
     }
-
-
-    //Zadanie I
 
     @GetMapping
     public ResponseEntity<Collection<Meeting>> getAllMeetings() {
